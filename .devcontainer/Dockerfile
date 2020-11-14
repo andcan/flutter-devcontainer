@@ -86,7 +86,7 @@ RUN set -ex; \
 # flutter
 RUN set -ex; \
     mkdir -p ${FLUTTER_SDK_ROOT} \
-    && git clone --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_SDK_ROOT} \
+    && git clone --branch ${FLUTTER_REF} https://github.com/flutter/flutter.git ${FLUTTER_SDK_ROOT} \
     && flutter config --no-analytics \
     && flutter precache \
     && yes | flutter doctor --android-licenses \
