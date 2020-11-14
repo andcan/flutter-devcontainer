@@ -2,8 +2,8 @@ name: build-docker-image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'flutter-*'
 
 jobs:
   main:
@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: olegtarasov/get-tag@v2
         id: tagName
+        with:
+          tagRegex: 'flutter-(.*)'
+          tagRegexGroup: 1
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
