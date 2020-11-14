@@ -14,6 +14,8 @@ jobs:
         with:
           tagRegex: 'flutter-(.*)'
           tagRegexGroup: 1
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -28,7 +30,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./
           file: ./.devcontainer/Dockerfile
           push: true
           tags: registry.gitlab.com/andk8s/images/app:${{ steps.tagName.outputs.tag }}
